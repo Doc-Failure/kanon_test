@@ -1,10 +1,14 @@
 import express from "express";
+
 const app = express();
 const port = 5000;
-app.get("/", (_, res) => {
+require("./api/countriesRoutes")(app);
+/*app.get("/", (_, res) => {
   res.status(200).send();
-});
-app.listen(port, () => console.log(`Running on port ${port}`));
+});*/
+
+//routes
+app.listen(port, () => console.log("Running on port " + port));
 
 /*if (process.env.NODE_ENV === "production") {
   // Express will serve up production assets
