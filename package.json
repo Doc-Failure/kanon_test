@@ -1,7 +1,7 @@
 {
   "name": "kanon_test",
   "version": "1.0.0",
-  "description": "reply to question for kanon",
+  "description": "",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
