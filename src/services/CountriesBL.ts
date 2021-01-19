@@ -1,18 +1,27 @@
 import axios from "axios";
 import { Logger } from "tslog";
+import CountriesTypes from "../types/CountriesTypes";
 
 export default class CountriesBL {
-  endpoint: string = "https://restcountries.eu/rest/v2/name/"; //https://restcountries.eu/rest/v2/name/{name}
+  //The request path is: https://restcountries.eu/rest/v2/name/{name}
+  endpoint: string = "https://restcountries.eu/rest/v2/name/";
   log: Logger = new Logger({ name: "CountriesBL" });
 
-  async getCountryByName(countryName: String): Promise<any> {
-    let getResult: JSON;
+  async getCountryByName(
+    countryName: string,
+    fullText: boolean = false
+  ): Promise<CountriesTypes> {
+    let response: CountriesTypes;
     try {
-      getResult = await axios.get(this.endpoint + countryName);
+      if (countryName) {
+        let getResult = await axios.get(
+          this.endpoint + countryName + "?fullText=" + fullText
+        );
+        if (getResult.data) response = getResult.data;
+      }
     } catch (error) {
-      this.log.error("error: " + error);
+      //this.log.error("error: " + error);
     }
-    this.log.silly(getResult);
-    return getResult;
+    return response;
   }
 }

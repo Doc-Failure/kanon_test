@@ -1,7 +1,10 @@
 import express from "express";
+import * as bodyParser from "body-parser";
 
-const app = express();
+export const app = express();
 const port = 5000;
+
+app.use(bodyParser.json());
 require("./api/countriesRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
