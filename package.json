@@ -10,7 +10,7 @@
     "dev:server": "nodemon --config nodemon.json src/index.ts",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "test": "jest",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Stefano Convertino",
   "license": "ISC",
