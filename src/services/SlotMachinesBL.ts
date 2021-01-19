@@ -3,7 +3,8 @@ import { Logger } from "tslog";
 export default class SlotMachinesBL {
   log: Logger = new Logger({ name: "SlotMachinesBL" });
 
-  Spin(userId: string): { spinResult: string[]; coinWin: number } {
+  //Probably in more complex contexts we should consider some behavioral patterns
+  spin(userId: string): { spinResult: string[]; coinWin: number } {
     let response: { spinResult: string[]; coinWin: number } = <
       { spinResult: string[]; coinWin: number }
     >{};
