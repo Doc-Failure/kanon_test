@@ -24,5 +24,6 @@ src
 └───model # All the models for the state manager
 └───style # All the CSS
 
-Site is deployed under:
+# Url to deployed site:
+
 https://k4n0nt3st.herokuapp.com/
