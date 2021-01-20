@@ -1,29 +1,17 @@
 import React, { Component } from "react";
-import { observer } from "mobx-react";
-import axios from "axios";
+//import axios from "axios";
 class Countries extends Component {
   constructor(props) {
     super(props);
     this.state = { countryName: "", countriesResponse: "" };
 
-    this.getCountry = this.getCountry.bind(this);
     this.handleCountryName = this.handleCountryName.bind(this);
   }
 
-  getCountry = async (event) => {
-    let countryResult = await axios.get(
-      "/api/v1/countryByName?country=" + this.state.countryName
-    );
-    this.setState({ countriesResponse: JSON.stringify(countryResult.data[0]) });
-  };
-
-  getCountries = async (event) => {
-    console.log(this.state.countryName);
-    let countryResult = await axios.get(
-      "/api/v1/countriesByName?countries=" + this.state.countryName
-    );
-    this.setState({ countriesResponse: JSON.stringify(countryResult.data[0]) });
-  };
+  async componentDidMount() {
+    //let countryResult = await axios.get("https://restcountries.eu/rest/v2/all");
+    //countryResult.data;
+  }
 
   handleCountryName = (event) => {
     this.setState({ countryName: event.currentTarget.value });
@@ -31,26 +19,20 @@ class Countries extends Component {
 
   render() {
     return (
-      <div>
-        <label>
-          Insert the name of one full Country and the press Get Country Ex.
-          Malta or more than one name of Country divided by commas{" "}
-        </label>
+      <div style={{ border: "1px solid" }}>
         <br />
-        <label>Country Name: </label>
+        <h1>Question Number 3</h1>
+        <br />
         <input
           type="text"
-          id="countryName"
-          name="countryName"
+          id="filter"
+          name="filter"
           onChange={this.handleCountryName}
         />
-        <button onClick={this.getCountry}>Get Country</button>
-        <button onClick={this.getCountries}>Get Countries</button>
         <br />
-        <textarea value={this.state.countriesResponse} readOnly />
       </div>
     );
   }
 }
 
-export default observer(Countries);
+export default Countries;

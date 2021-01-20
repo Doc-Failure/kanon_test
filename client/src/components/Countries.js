@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { observer } from "mobx-react";
 import axios from "axios";
 class Countries extends Component {
   constructor(props) {
@@ -34,8 +33,10 @@ class Countries extends Component {
       <div>
         <label>
           Insert the name of one full Country and the press Get Country Ex.
+          <br />
           Malta or more than one name of Country divided by commas{" "}
         </label>
+        <br />
         <br />
         <label>Country Name: </label>
         <input
@@ -53,4 +54,4 @@ class Countries extends Component {
   }
 }
 
-export default observer(Countries);
+export default Countries;
