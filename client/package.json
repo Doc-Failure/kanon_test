@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
     "mobx": "^6.0.4",
+    "mobx-react": "^7.0.5",
     "react": "^16.8.6",
+    "react-app-rewired": "^2.1.8",
     "react-dom": "^16.8.6",
     "react-scripts": "^3.4.4",
     "web-vitals": "^0.2.4"
@@ -36,6 +37,11 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.12",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "babel-preset-react-native": "4.0.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
     "enzyme-to-json": "^3.6.1",

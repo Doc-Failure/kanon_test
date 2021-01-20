@@ -5,7 +5,7 @@ import SlotMachinesBL from "../services/SlotMachinesBL";
 https: module.exports = (app: Application) => {
   let log: Logger = new Logger({ name: "slotMachine" });
 
-  //EntryPoint for Question 1
+  //EntryPoint for Question 4
   app.get("/api/v1/slotMachine/spin", async (req: Request, res: Response) => {
     const slotMachine: SlotMachinesBL = new SlotMachinesBL();
     let spinResult: {
