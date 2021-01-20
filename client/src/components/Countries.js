@@ -4,7 +4,7 @@ import axios from "axios";
 class Countries extends Component {
   constructor(props) {
     super(props);
-    this.state = { countryName: "" };
+    this.state = { countryName: "", countriesResponse: "" };
 
     this.getCountry = this.getCountry.bind(this);
     this.handleCountryName = this.handleCountryName.bind(this);
@@ -14,15 +14,18 @@ class Countries extends Component {
     let countryResult = await axios.get(
       "/api/v1/countryByName?country=" + this.state.countryName
     );
-    alert("Server Respond " + countryResult);
+    this.setState({ countriesResponse: JSON.stringify(countryResult.data[0]) });
   };
 
-  getCountries = (event) => {
-    alert("Hello" + this.state.countryName);
+  getCountries = async (event) => {
+    console.log(this.state.countryName);
+    let countryResult = await axios.get(
+      "/api/v1/countriesByName?countries=" + this.state.countryName
+    );
+    this.setState({ countriesResponse: JSON.stringify(countryResult.data[0]) });
   };
 
   handleCountryName = (event) => {
-    debugger;
     this.setState({ countryName: event.currentTarget.value });
   };
 
@@ -37,7 +40,9 @@ class Countries extends Component {
           onChange={this.handleCountryName}
         />
         <button onClick={this.getCountry}>Get Country</button>
-        <button onClick={this.getCountries}>Get Country</button>
+        <button onClick={this.getCountries}>Get Countries</button>
+        <br />
+        <textarea value={this.state.countriesResponse} readOnly />
       </div>
     );
   }
