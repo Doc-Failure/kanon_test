@@ -11,10 +11,11 @@ class Countries extends Component {
   async componentDidMount() {
     //let countryResult = await axios.get("https://restcountries.eu/rest/v2/all");
     //countryResult.data;
+    //Use react or Mobx to add data to a list
   }
 
   handleCountryName = (event) => {
-    this.setState({ countryName: event.currentTarget.value });
+    //Use redux or momx to filter the element of the list
   };
 
   render() {
