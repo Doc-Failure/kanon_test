@@ -2,7 +2,7 @@ import express from "express";
 import * as bodyParser from "body-parser";
 
 export const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 require("./api/countriesRoutes")(app);
