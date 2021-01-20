@@ -24,7 +24,6 @@ https: module.exports = (app: Application) => {
     const countriesFinder: CountriesBL = new CountriesBL();
     let ApiResult: Array<CountriesTypes> = new Array<CountriesTypes>();
     try {
-      console.log(req.query.countries);
       let countryName: Array<string> = (<string>req.query.countries).split(",");
       await Promise.all(
         countryName.map((cell) => {
