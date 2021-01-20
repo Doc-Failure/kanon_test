@@ -2,15 +2,16 @@
   "name": "kanon_test",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "tsc": "tsc",
+    "postinstall": "npm run tsc",
     "start": "tsc & node .",
     "dev:client": "npm run start --prefix client",
     "dev:server": "nodemon --config nodemon.json src/index.ts",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "test": "jest",
-    "heroku-postbuild": "npm build && npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Stefano Convertino",
   "license": "ISC",
