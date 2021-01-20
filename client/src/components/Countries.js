@@ -32,6 +32,10 @@ class Countries extends Component {
   render() {
     return (
       <div>
+        <label>
+          Insert the name of one full Country and the press Get Country Ex.
+          Malta or more than one name of Country divided by commas{" "}
+        </label>
         <label>Country Name: </label>
         <input
           type="text"
