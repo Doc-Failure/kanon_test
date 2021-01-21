@@ -17,7 +17,6 @@ class Countries extends Component {
   };
 
   getCountries = async (event) => {
-    console.log(this.state.countryName);
     let countryResult = await axios.get(
       "/api/v1/countriesByName?countries=" + this.state.countryName
     );
