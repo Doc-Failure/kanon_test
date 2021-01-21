@@ -1,6 +1,6 @@
 import { SET_FILTER } from "../actionTypes";
 
-const visibilityFilter = (state = "initialState", action) => {
+const visibilityFilter = (state = "", action) => {
   switch (action.type) {
     case SET_FILTER: {
       return action.payload.filter;

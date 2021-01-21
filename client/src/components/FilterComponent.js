@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { addCountry } from "../redux/actions";
-import { getCountries } from "../redux/selectors";
+import { addCountry, setFilter } from "../redux/actions";
 class Countries extends Component {
   constructor(props) {
     super(props);
@@ -24,25 +23,27 @@ class Countries extends Component {
   }
 
   handleCountryName = (event) => {
-    //Use redux or momx to filter the element of the list
+    this.props.setFilter(event.currentTarget.value);
   };
 
   render() {
-    let CountryList = this.props.countries.map((value) => {
-      debugger;
-      return (
-        <div>
-          <p>
-            <b>Name: </b>
-            {value.content.name}
-            <b> nativeName: </b>
-            {value.content.nativeName}
-            <b> alpha2Code: </b>
-            {value.content.alpha2Code}
-          </p>
-        </div>
-      );
-    });
+    console.log(this.props);
+    let CountryList = this.props.countries
+      ? this.props.countries.map((value, index) => {
+          return (
+            <div key={index}>
+              <p>
+                <b>Name: </b>
+                {value.content.name}
+                <b> nativeName: </b>
+                {value.content.nativeName}
+                <b> alpha2Code: </b>
+                {value.content.alpha2Code}
+              </p>
+            </div>
+          );
+        })
+      : "";
     return (
       <div style={{ border: "1px solid" }}>
         <br />
@@ -63,9 +64,11 @@ class Countries extends Component {
 }
 
 const mapStateToProps = (state) => {
-  //const { visibilityFilter } = state;
-  const countries = state.country || {};
-  return countries;
+  const countriesList = state.country || {};
+  const countries = countriesList.countries.filter((value) => {
+    return value.content.name.includes(state.visibilityFilter);
+  });
+  return { countries };
 };
 
-export default connect(mapStateToProps, { addCountry })(Countries);
+export default connect(mapStateToProps, { addCountry, setFilter })(Countries);
