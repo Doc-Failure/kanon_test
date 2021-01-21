@@ -27,7 +27,6 @@ class Countries extends Component {
   };
 
   render() {
-    console.log(this.props);
     let CountryList = this.props.countries
       ? this.props.countries.map((value, index) => {
           return (
